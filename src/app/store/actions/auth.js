@@ -2,6 +2,7 @@ import { authSlice } from "../slices/authSlice";
 import axios from "../../axios.config";
 import { loadNotificationsThunk } from "./notifications";
 import { replaceNullValues } from "../../shared/utils";
+import firebase from "@/app/firebase";
 
 export const {
   login,
@@ -11,26 +12,26 @@ export const {
   updateUserInfoProp,
 } = authSlice.actions;
 
-export const loginActionThunk = (data) => async (dispatch) => {
-  axios.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
+export const loginActionThunk = (email, password) => async (dispatch) => {
+  try {
+    const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    // Aquí puedes mapear los datos del usuario según tu necesidad
+    dispatch(login({ user }));
+  } catch (error) {
+    console.error(error.message);
+  }
+};
 
-  const loginData = {
-    ...data,
-    user: {
-      ...data.user,
-      isResponsible: data.user.role_id === 2,
-      arrangementCreationEnabled:
-        data.user.user_info.can_belong_to_arrangement || false,
-      user_info: replaceNullValues(data.user.user_info),
-    },
-  };
-  const { id } = loginData.user;
-  dispatch(
-    loadNotificationsThunk({
-      user_receiver_id: id,
-    })
-  );
-  dispatch(login(loginData));
+export const signupActionThunk = (email, password) => async (dispatch) => {
+  try {
+    const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+    const user = userCredential.user;
+    // Aquí puedes mapear los datos del usuario según tu necesidad
+    dispatch(login({ user }));
+  } catch (error) {
+    console.error(error.message);
+  }
 };
 
 export const logoutActionThunk = () => (dispatch) => {

@@ -1,18 +1,20 @@
 // pages/signup.js
 import React from 'react';
 import { useForm } from 'react-hook-form';
-// import firebase from '../';
-import firebase from '@/app/firebase';
 import { Button, TextField, Container } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { signupActionThunk } from '@/app/store/actions/authActions';
 
 const Signup = () => {
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const password = watch('password', '');
 
+  const dispatch = useDispatch();
+
   const onSubmit = async (data) => {
     try {
-      await firebase?.auth().createUserWithEmailAndPassword(data.email, data.password);
-      // Redirect or handle successful signup
+      await dispatch(signupActionThunk(data.email, data.password));
+      // Redirect o manejar el registro exitoso
     } catch (error) {
       console.error(error.message);
     }

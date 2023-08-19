@@ -8,10 +8,7 @@ export const validateEmail = (email) => {
   return emailRegex.test(email);
 };
 
-export const validateHRMUsername = (username) => {
-  const usernameRegex = new RegExp(/^[a-z]{2,}\.[a-z]{2,}$/);
-  return usernameRegex.test(username);
-};
+
 
 export const validatePhoneNumber = (phoneNumber) => {
   const phoneNumberRegex = new RegExp(

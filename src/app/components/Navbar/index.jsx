@@ -1,7 +1,6 @@
-'use client'
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
-import firebase from "@/app/firebase";
+import { useAuthState } from "@/app/store/hooks";
 import HomeIcon from "@mui/icons-material/Home";
 import EqualizerIcon from "@mui/icons-material/Equalizer"; // Metrures Icon
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"; // Body Icon
@@ -9,18 +8,8 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Profile Ic
 import LoginIcon from "@mui/icons-material/Login"; // Login Icon
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage login state
+  const { isAuth } = useAuthState();
 
-
-  useEffect(() => {
-    // Escucha los cambios en el estado de autenticación del usuario
-    const unsubscribe = firebase?.auth().onAuthStateChanged((user) => {
-      setIsLoggedIn(!!user); // Actualiza el estado según si el usuario está logueado o no
-    });
-
-    // Limpia el observador cuando el componente se desmonte
-    return () => unsubscribe();
-  }, []);
   return (
     <AppBar position="static">
       <Toolbar>
@@ -31,7 +20,7 @@ const Navbar = () => {
           <HomeIcon style={{ fontSize: "1rem" }} />
           Inicio
         </IconButton>
-        {isLoggedIn ? (
+        {isAuth ? (
           <>
             <IconButton color="inherit" href="/metrures" style={{ fontSize: "0.8rem" }}>
               <EqualizerIcon style={{ fontSize: "1rem" }} />

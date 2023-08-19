@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import { useForm } from "react-hook-form";
-import firebase from "@/app/firebase";
 import { Button, TextField, Container } from "@mui/material";
 import { LoginIllustrator } from "@/app/resources/components/login_illustrator";
+import { useDispatch } from "react-redux";
+import { loginActionThunk } from "../../store/actions/";
 
 const Login = () => {
   const {
@@ -12,12 +13,12 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const dispatch = useDispatch();
+
   const onSubmit = async (data) => {
     try {
-      await firebase
-        ?.auth()
-        .signInWithEmailAndPassword(data.email, data.password);
-      // Redirect or handle successful login
+      await dispatch(loginActionThunk(data.email, data.password));
+      // Redirect o manejar el inicio de sesión exitoso
     } catch (error) {
       console.error(error.message);
     }
