@@ -4,6 +4,7 @@ const Biceps = () => {
   return (
     <g
       id="biceps"
+      className="body-map__muscle"
       style={{ stroke: "black" }}
       onMouseOver={(e) => {
         e.currentTarget.style.fill = "red";

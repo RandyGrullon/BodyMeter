@@ -1,13 +1,14 @@
 import React from "react";
-import Abdominals from "./bodyParts/Front/Abdominals";
-import Obliques from "./bodyParts/Front/Obliques";
-import Forearms from "./bodyParts/Front/Forearms";
-import Biceps from "./bodyParts/Front/Biceps";
-import Shoulders from "./bodyParts/Front/Shoulders";
-import Traps from "./bodyParts/Front/Traps";
-import Chest from "./bodyParts/Front/Chest";
-import Quads from "./bodyParts/Front/Quads";
-import Calves from "./bodyParts/Front/Calves";
+import Abdominals from "../bodyParts/Front/Abdominals";
+import Obliques from "../bodyParts/Front/Obliques";
+import Forearms from "../bodyParts/Front/Forearms";
+import Biceps from "../bodyParts/Front/Biceps";
+import Shoulders from "../bodyParts/Front/Shoulders";
+import Traps from "../bodyParts/Front/Traps";
+import Chest from "../bodyParts/Front/Chest";
+import Quads from "../bodyParts/Front/Quads";
+import Calves from "../bodyParts/Front/Calves";
+import Body from "../bodyParts/Front/Body";
 
 const BodyMapFront = () => {
   return (
@@ -18,7 +19,8 @@ const BodyMapFront = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <Abdominals />
+        <Body />
+        <Abdominals  />
         <Obliques />
         <Forearms />
         <Biceps />
