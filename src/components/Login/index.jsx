@@ -1,8 +1,7 @@
-"use client";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Button, TextField, Container } from "@mui/material";
-import { LoginIllustrator } from "@/app/resources/components/login_illustrator";
+import { LoginIllustrator } from "../../../resources/components/login_illustrator";
 import { loginActionThunk } from "@/app/store/actions/auth";
 
 const Login = () => {

@@ -1,4 +1,4 @@
-"use client";
+;
 import React from "react";
 import { useForm } from "react-hook-form";
 import SignUpIllustrator from "../../resources/images/signup_illustrator.jpg";

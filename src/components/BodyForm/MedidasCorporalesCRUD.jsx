@@ -1,4 +1,3 @@
-"use client";
 import React, { useState, useEffect } from "react";
 import MedidasForm from "./MedidasForm";
 import MedidasList from "./MedidasList";

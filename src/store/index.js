@@ -1,30 +1,20 @@
-"use client"
- import { configureStore } from "@reduxjs/toolkit";
-import {
-  FLUSH,
-  PAUSE,
-  PERSIST,
-  persistCombineReducers,
-  persistStore,
-  PURGE,
-  REGISTER,
-  REHYDRATE,
-} from "redux-persist";
-import storage from "redux-persist/lib/storage";
+// store/index.js
 
-import { appSlice } from "./slices/appSlice";
-import { authSlice } from "./slices/authSlice";
+import { configureStore } from "@reduxjs/toolkit";
+import { createWrapper } from "next-redux-wrapper";
+import { FLUSH, PAUSE, PERSIST, PURGE, REGISTER, REHYDRATE, persistCombineReducers, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { appSlice } from "./reducers/appSlice";
+import { authSlice } from "./reducers/authSlice";
 
 const config = {
   key: "root",
   version: 1,
   storage,
-  // slices that should not be saved in storage when the page is refreshed
-  blacklist: ["app"],
+  blacklist: ["app"], // Slices to exclude from being persisted
 };
 
 const makeStore = () => {
-  // add your reducers slices here
   const reducers = {
     [authSlice.name]: authSlice.reducer,
     [appSlice.name]: appSlice.reducer,
@@ -34,7 +24,6 @@ const makeStore = () => {
 
   const store = configureStore({
     reducer: persistedReducer,
-    devTools: true,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
@@ -50,3 +39,4 @@ const store = makeStore();
 
 export default store;
 
+export const wrapper = createWrapper(makeStore);

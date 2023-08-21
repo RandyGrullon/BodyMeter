@@ -1,12 +1,9 @@
-"use client" 
+// reducers/appSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-
 
 const appInitialState = {
   mobileMenuIsVisible: false,
-  notificationsMenuIsVisible: false,
   appLoading: true,
-  showArrgTypeModal: false
 };
 
 export const appSlice = createSlice({
@@ -16,14 +13,8 @@ export const appSlice = createSlice({
     toggleMobileMenu: (state) => {
       state.mobileMenuIsVisible = !state.mobileMenuIsVisible;
     },
-    toggleNotificationsMenu: (state) => {
-      state.notificationsMenuIsVisible = !state.notificationsMenuIsVisible;
-    },
     toggleAppLoading: (state) => {
       state.appLoading = !state.appLoading;
-    },
-    toggleArrgTypeModal: (state) => {
-      state.showArrgTypeModal = !state.showArrgTypeModal;
     },
   },
 });
