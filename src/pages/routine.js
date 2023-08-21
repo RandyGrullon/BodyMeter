@@ -1,18 +1,19 @@
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/app/components/Navbar";
 import FreeRoutines from "@/app/components/FreeRoutines";
 import PaidRoutines from "@/app/components/PaidRoutines";
+import { loadRoutines } from "@/app/utils/dataLoader";
 
 const RoutinesPage = () => {
-  const freeRoutines = [
-    { id: 1, title: "Rutina 1", description: "Descripción de la rutina 1" },
-    // ...
-  ];
-  const paidRoutines = [
-    { id: 2, title: "Rutina 2", description: "Descripción de la rutina 2", price: 9.99 },
-    // ...
-  ];
+  const [freeRoutines, setFreeRoutines] = useState([]);
+  const [paidRoutines, setPaidRoutines] = useState([]);
+
+  useEffect(() => {
+    loadRoutines().then((data) => {
+      setFreeRoutines(data.free);
+      setPaidRoutines(data.paid);
+    });
+  }, []);
 
   const handleRoutineSelected = (routine) => {
     // Manejar la selección de una rutina

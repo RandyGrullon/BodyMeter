@@ -15,7 +15,7 @@ const Body = () => {
         e.currentTarget.style.fill = "none";
       }}
     >
-      <g class="body-map__model" id="body">
+      <g className="body-map__model" id="body">
         <path
           d="M143.332 408.947C143.341 408.935 143.349 408.923 143.358 408.911V408.928C143.349 408.934 143.341 408.941 143.332 408.947Z"
           data-darkreader-inline-fill=""

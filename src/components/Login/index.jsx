@@ -2,7 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Button, TextField, Container } from "@mui/material";
 import { LoginIllustrator } from "../../../resources/components/login_illustrator";
-import { loginActionThunk } from "@/app/store/actions/auth";
+// import { loginActionThunk } from "@/app/store/actions/auth";
 
 const Login = () => {
   const {
@@ -12,12 +12,15 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    try {
-      await loginActionThunk(data.email, data.password);
-      // Redirect o manejar el inicio de sesión exitoso
-    } catch (error) {
-      console.error(error.message);
-    }
+    // try {
+    //   await loginActionThunk(data.email, data.password);
+    //   // Redirect o manejar el inicio de sesión exitoso
+    // } catch (error) {
+    //   console.error(error.message);
+    // }
+    console.log('====================================');
+    console.log(data);
+    console.log('====================================');
   };
 
   return (

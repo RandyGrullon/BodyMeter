@@ -35,7 +35,7 @@ const MedidasCorporalesCRUD = () => {
   };
 
   return (
-    <div className="container bg-white ">
+    <div className="container bg-white">
       <div className="mx-auto max-w-2xl p-4 flex">
         <div className="">
           <h1 className="text-2xl font-semibold text-center text-black">
