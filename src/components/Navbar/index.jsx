@@ -1,6 +1,6 @@
 import React from "react";
 import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
-import { useAuthState } from "@/app/store/hooks";
+// import { useAuthState } from "@/store/hooks";
 import HomeIcon from "@mui/icons-material/Home";
 import EqualizerIcon from "@mui/icons-material/Equalizer"; // Metrures Icon
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"; // Body Icon
@@ -8,7 +8,9 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Profile Ic
 import LoginIcon from "@mui/icons-material/Login"; // Login Icon
 
 const Navbar = () => {
-  const { isAuth } = useAuthState();
+  // const { isAuth } = useAuthState();
+
+  const isAuth = true;
 
   return (
     <AppBar position="static">
