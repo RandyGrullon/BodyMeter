@@ -1,5 +1,5 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { createWrapper } from "next-redux-wrapper";
+"use client"
+ import { configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
@@ -14,7 +14,6 @@ import storage from "redux-persist/lib/storage";
 
 import { appSlice } from "./slices/appSlice";
 import { authSlice } from "./slices/authSlice";
-import { notificationsSlice } from "./slices/notificationsSlice";
 
 const config = {
   key: "root",
@@ -29,7 +28,6 @@ const makeStore = () => {
   const reducers = {
     [authSlice.name]: authSlice.reducer,
     [appSlice.name]: appSlice.reducer,
-    [notificationsSlice.name]: notificationsSlice.reducer,
   };
 
   const persistedReducer = persistCombineReducers(config, reducers);
@@ -52,4 +50,3 @@ const store = makeStore();
 
 export default store;
 
-export const wrapper = createWrapper(makeStore);

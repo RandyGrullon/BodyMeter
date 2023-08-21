@@ -1,6 +1,6 @@
+"use client" 
 import { createSlice } from "@reduxjs/toolkit";
 
-import { toggleScrolling } from "../../shared/utils";
 
 const appInitialState = {
   mobileMenuIsVisible: false,
@@ -14,19 +14,15 @@ export const appSlice = createSlice({
   initialState: appInitialState,
   reducers: {
     toggleMobileMenu: (state) => {
-      toggleScrolling();
       state.mobileMenuIsVisible = !state.mobileMenuIsVisible;
     },
     toggleNotificationsMenu: (state) => {
-      toggleScrolling();
       state.notificationsMenuIsVisible = !state.notificationsMenuIsVisible;
     },
     toggleAppLoading: (state) => {
-      toggleScrolling();
       state.appLoading = !state.appLoading;
     },
     toggleArrgTypeModal: (state) => {
-      toggleScrolling();
       state.showArrgTypeModal = !state.showArrgTypeModal;
     },
   },

@@ -1,7 +1,4 @@
 import { authSlice } from "../slices/authSlice";
-import axios from "../../axios.config";
-import { loadNotificationsThunk } from "./notifications";
-import { replaceNullValues } from "../../shared/utils";
 import firebase from "@/app/firebase";
 
 export const {
@@ -34,18 +31,6 @@ export const signupActionThunk = (email, password) => async (dispatch) => {
   }
 };
 
-export const logoutActionThunk = () => (dispatch) => {
-  axios.defaults.headers.common["Authorization"] = "";
-  dispatch(logout());
-};
 
-export const updateUserThunk = (userInfo) => (dispatch) => {
-  dispatch(updateUserInfo(userInfo));
 
-  dispatch(
-    updateUserProp({
-      prop: "arrangementCreationEnabled",
-      value: userInfo.can_belong_to_arrangement,
-    })
-  );
-};
+
