@@ -1,6 +1,6 @@
-## MuscleMeter: Tu Compañero de Fitness Personalizado
+## Bodymeter: Tu Compañero de Fitness Personalizado
 
-¡Bienvenido a MuscleMeter, la plataforma definitiva para tus necesidades de fitness personalizado! Con MuscleMeter, podrás llevar un seguimiento de tu progreso, acceder a planes de entrenamiento y dietas diseñados específicamente para tu tipo de cuerpo, participar en competencias y clases en vivo, conectarte con otros entusiastas del fitness y mucho más.
+¡Bienvenido a Bodymeter, la plataforma definitiva para tus necesidades de fitness personalizado! Con Bodymeter, podrás llevar un seguimiento de tu progreso, acceder a planes de entrenamiento y dietas diseñados específicamente para tu tipo de cuerpo, participar en competencias y clases en vivo, conectarte con otros entusiastas del fitness y mucho más.
 
 ### Características Principales
 
@@ -16,7 +16,7 @@
 
 ### Cómo Funciona
 
-1. **Regístrate y Accede:** Crea tu cuenta en MuscleMeter y accede a tu perfil personalizado.
+1. **Regístrate y Accede:** Crea tu cuenta en Bodymeter y accede a tu perfil personalizado.
 
 2. **Descubre tu Tipo de Cuerpo:** Completa un breve cuestionario para determinar tu tipo de cuerpo y recibir planes de entrenamiento y dietas adaptados a tus necesidades.
 
@@ -32,4 +32,4 @@
 
 8. **Interactúa con la Comunidad:** Participa en foros y discusiones para compartir tus conocimientos, aprender de otros y formar parte de una comunidad de entusiastas del fitness.
 
-MuscleMeter es tu compañero confiable en tu viaje hacia un estilo de vida más saludable y en forma. ¡Únete a la comunidad de MuscleMeter hoy mismo y comienza a transformar tu cuerpo y tu vida!
+Bodymeter es tu compañero confiable en tu viaje hacia un estilo de vida más saludable y en forma. ¡Únete a la comunidad de Bodymeter hoy mismo y comienza a transformar tu cuerpo y tu vida!
