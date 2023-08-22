@@ -6,6 +6,7 @@ import EqualizerIcon from "@mui/icons-material/Equalizer"; // Metrures Icon
 import PublicIcon from '@mui/icons-material/Public';import FitnessCenterIcon from "@mui/icons-material/FitnessCenter"; // Body Icon
 import AccountCircleIcon from "@mui/icons-material/AccountCircle"; // Profile Icon
 import LoginIcon from "@mui/icons-material/Login"; // Login Icon
+import Link from "next/link";
 
 const Navbar = () => {
   // const { isAuth } = useAuthState();
@@ -18,9 +19,15 @@ const Navbar = () => {
         <Typography variant="h6" style={{ flexGrow: 1, fontSize: "1rem" }}>
           Logo
         </Typography>
+        <Link href="/videos" passHref>
+          <Button color="inherit">Video Library</Button>
+        </Link>
+        <Link href="/live-classes" passHref>
+          <Button color="inherit">Live Classes</Button>
+        </Link>
         <IconButton
           color="inherit"
-          href="/inicio"
+          href="/"
           style={{ fontSize: "0.8rem" }}
         >
           <HomeIcon style={{ fontSize: "1rem" }} />

@@ -10,7 +10,6 @@ const page = () => {
 
   return (
     <div className="bg-white h-screen">
-      <Navbar />
       <ProtectedRoute>
         {/* <Profile user={user} /> */}
         <Profile />
