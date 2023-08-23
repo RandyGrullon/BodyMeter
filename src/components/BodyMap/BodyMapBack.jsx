@@ -11,17 +11,13 @@ import Traps from "../bodyParts/Back/Traps";
 import TrapsMiddle from "../bodyParts/Back/Traps-middle";
 import Triceps from "../bodyParts/Back/Triceps";
 
-const BodyMap = () => {
-  const [hoveredPart, setHoveredPart] = useState(null);
-
-  const handlePartHover = (part) => {
-    setHoveredPart(part);
-  };
-
-  const handlePartLeave = () => {
-    setHoveredPart(null);
-  };
-
+const BodyMap = ({
+  handleMuscleClick,
+  handlePartHover,
+  handlePartLeave,
+  hoveredPart,
+  activeMuscle,
+}) => {
   return (
     <div className="w-3/5 h-3/5">
       <svg
@@ -30,74 +26,111 @@ const BodyMap = () => {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <Body />
+
         <g
-          onMouseEnter={() => handlePartHover("body")}
+          onMouseEnter={handlePartHover("calves")}
           onMouseLeave={handlePartLeave}
         >
-          <Body isHighlighted={hoveredPart === "body"} />
+          <Calves
+            isHighlighted={hoveredPart === "calves"}
+            isActive={activeMuscle === "calves"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("calves")}
+          onClick={handleMuscleClick("forearms")}
+          onMouseEnter={handlePartHover("forearms")}
           onMouseLeave={handlePartLeave}
         >
-          <Calves isHighlighted={hoveredPart === "calves"} />
+          <Forearms
+            isHighlighted={hoveredPart === "forearms"}
+            isActive={activeMuscle === "forearms"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("forearms")}
+          onClick={handleMuscleClick("glutes")}
+          onMouseEnter={handlePartHover("glutes")}
           onMouseLeave={handlePartLeave}
         >
-          <Forearms isHighlighted={hoveredPart === "forearms"} />
+          <Glutes
+            isHighlighted={hoveredPart === "glutes"}
+            isActive={activeMuscle === "glutes"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("glutes")}
+          onClick={handleMuscleClick("hamstrings")}
+          onMouseEnter={handlePartHover("hamstrings")}
           onMouseLeave={handlePartLeave}
         >
-          <Glutes isHighlighted={hoveredPart === "glutes"} />
+          <Hamstrings
+            isHighlighted={hoveredPart === "hamstrings"}
+            isActive={activeMuscle === "hamstrings"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("hamstrings")}
+          onClick={handleMuscleClick("lats")}
+          onMouseEnter={handlePartHover("lats")}
           onMouseLeave={handlePartLeave}
         >
-          <Hamstrings isHighlighted={hoveredPart === "hamstrings"} />
+          <Lats
+            isHighlighted={hoveredPart === "lats"}
+            isActive={activeMuscle === "lats"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("lats")}
+          onClick={handleMuscleClick("lowerback")}
+          onMouseEnter={handlePartHover("lowerback")}
           onMouseLeave={handlePartLeave}
         >
-          <Lats isHighlighted={hoveredPart === "lats"} />
+          <Lowerback
+            isHighlighted={hoveredPart === "lowerback"}
+            isActive={activeMuscle === "lowerback"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("lowerback")}
+          onClick={handleMuscleClick("shoulders")}
+          onMouseEnter={handlePartHover("shoulders")}
           onMouseLeave={handlePartLeave}
         >
-          <Lowerback isHighlighted={hoveredPart === "lowerback"} />
+          <Shoulders
+            isHighlighted={hoveredPart === "shoulders"}
+            isActive={activeMuscle === "shoulders"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("shoulders")}
+          onClick={handleMuscleClick("traps")}
+          onMouseEnter={handlePartHover("traps")}
           onMouseLeave={handlePartLeave}
         >
-          <Shoulders isHighlighted={hoveredPart === "shoulders"} />
+          <Traps
+            isHighlighted={hoveredPart === "traps"}
+            isActive={activeMuscle === "traps"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("traps")}
+          onClick={handleMuscleClick("traps-middle")}
+          onMouseEnter={handlePartHover("traps-middle")}
           onMouseLeave={handlePartLeave}
         >
-          <Traps isHighlighted={hoveredPart === "traps"} />
+          <TrapsMiddle
+            isHighlighted={hoveredPart === "traps-middle"}
+            isActive={activeMuscle === "traps-middle"}
+          />
         </g>
         <g
-          onMouseEnter={() => handlePartHover("traps-middle")}
+          onClick={handleMuscleClick("triceps")}
+          onMouseEnter={handlePartHover("triceps")}
           onMouseLeave={handlePartLeave}
         >
-          <TrapsMiddle isHighlighted={hoveredPart === "traps-middle"} />
-        </g>
-        <g
-          onMouseEnter={() => handlePartHover("triceps")}
-          onMouseLeave={handlePartLeave}
-        >
-          <Triceps isHighlighted={hoveredPart === "triceps"} />
+          <Triceps
+            isHighlighted={hoveredPart === "triceps"}
+            isActive={activeMuscle === "triceps"}
+          />
         </g>
       </svg>
-      <h1 className="text-center text-3xl text-black font-bold uppercase">{hoveredPart}</h1>
+      <h1 className="text-center text-3xl text-black font-bold uppercase">
+        {hoveredPart}
+      </h1>
     </div>
   );
 };

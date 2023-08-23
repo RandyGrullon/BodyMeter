@@ -1,29 +1,45 @@
 import React from "react";
+import { Button } from "@mui/material";
 
 const MedidasList = ({ medidas, updateMedida, deleteMedida }) => {
   return (
-    <div>
-      {medidas.map((medida, index) => (
-        <div
-          key={index}
-          className="border rounded p-2 mb-2 flex justify-between items-center"
-        >
-          {/* Mostrar los detalles de la medida */}
-          <button
-            onClick={() => updateMedida(index, updatedMedida)}
-            className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded"
-          >
-            Editar
-          </button>
-          <button
-            onClick={() => deleteMedida(index)}
-            className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded"
-          >
-            Eliminar
-          </button>
-        </div>
-      ))}
-    </div>
+    <table className="w-full border-collapse text-black">
+      <thead>
+        <tr>
+          <th className="border p-2 bg-gray-100 text-left">Músculo</th>
+          <th className="border p-2 bg-gray-100 text-left">Medida</th>
+          <th className="border p-2 bg-gray-100 text-center w-32">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {medidas.map((medida, index) => (
+          <tr key={index} className="border">
+            <td className="border p-2">{medida.musculo}</td>
+            <td className="border p-2">{medida.medida}</td>
+            <td className="border p-2 flex justify-center space-x-2 w-40">
+              <Button
+                onClick={() => updateMedida(index, updateMedida)}
+                variant="contained"
+                className="text-black hover:text-white"
+                color="success"
+                size="small"
+              >
+                Editar
+              </Button>
+              <Button
+                onClick={() => deleteMedida(index)}
+                variant="contained"
+                className="text-black hover:text-white"
+                color="error"
+                size="small"
+              >
+                Eliminar
+              </Button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 

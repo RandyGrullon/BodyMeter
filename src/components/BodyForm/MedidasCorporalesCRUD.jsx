@@ -1,12 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 import MedidasForm from "./MedidasForm";
 import MedidasList from "./MedidasList";
-import BodyMapFront from "../BodyMap/BodyMapFront";
-import BodyMapBack from "../BodyMap/BodyMapBack";
+import { MapBack, MapFront } from "../BodyMap";
 
 const MedidasCorporalesCRUD = () => {
   const [medidas, setMedidas] = useState([]);
   const [isFront, setIsFront] = useState(true);
+  const [selectedMuscle, setSelectedMuscle] = useState(null);
+  const [muscleActive, setMuscleActive] = useState(false); // Nuevo estado
+  const [hoveredPart, setHoveredPart] = useState(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   useEffect(() => {
     // Obtener medidas desde el local storage al cargar
@@ -20,7 +29,13 @@ const MedidasCorporalesCRUD = () => {
   }, [medidas]);
 
   const addMedida = (medida) => {
-    setMedidas([...medidas, medida]);
+    console.log("medida", medida);
+    const newMedida = {
+      musculo: selectedMuscle,
+      medida: medida,
+    };
+    setMedidas([...medidas, newMedida]);
+    setMuscleActive(false);
   };
 
   const updateMedida = (index, updatedMedida) => {
@@ -34,18 +49,32 @@ const MedidasCorporalesCRUD = () => {
     setMedidas(updatedMedidas);
   };
 
+  const handleMuscleClick = (muscle) => {
+    setSelectedMuscle(muscle);
+    setMuscleActive(true);
+  };
+
+  const handlePartHover = (part) => {
+    setHoveredPart(part);
+  };
+
+  const handlePartLeave = () => {
+    setHoveredPart(null);
+  };
+
   return (
-    <div className="container bg-white">
+    <div className="container bg-white text-black">
       <div className="mx-auto max-w-2xl p-4 flex">
         <div className="">
           <h1 className="text-2xl font-semibold text-center text-black">
             Medidas Corporales CRUD
           </h1>
-          <MedidasForm addMedida={addMedida} />
-          <MedidasList
-            medidas={medidas}
-            updateMedida={updateMedida}
-            deleteMedida={deleteMedida}
+          <MedidasForm
+            addMeasure={addMedida}
+            selectedMuscle={selectedMuscle}
+            handleSubmit={handleSubmit}
+            register={register}
+            errors={errors}
           />
         </div>
         <div>
@@ -71,15 +100,40 @@ const MedidasCorporalesCRUD = () => {
 
           {isFront ? (
             <div className="w-[400px] flex justify-center">
-              <BodyMapFront />
+              <MapFront
+                handleMuscleClick={handleMuscleClick}
+                handlePartHover={handlePartHover}
+                handlePartLeave={handlePartLeave}
+                hoveredPart={hoveredPart}
+                isActive={muscleActive}
+              />
             </div>
           ) : (
             <div className="w-[400px] flex justify-center">
-              <BodyMapBack />
+              <MapBack
+                handleMuscleClick={handleMuscleClick}
+                handlePartHover={handlePartHover}
+                handlePartLeave={handlePartLeave}
+                hoveredPart={hoveredPart}
+                isActive={muscleActive}
+              />
             </div>
           )}
         </div>
       </div>
+      {medidas ? (
+        <div>
+          <MedidasList
+            medidas={medidas}
+            updateMedida={updateMedida}
+            deleteMedida={deleteMedida}
+          />
+        </div>
+      ) : (
+        <div className="text-center text-2xl text-black font-bold uppercase ">
+          No hay medidas
+        </div>
+      )}
     </div>
   );
 };
